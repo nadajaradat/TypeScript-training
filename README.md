@@ -1,5 +1,21 @@
 # TypeScript Training
 
+# Table of Contents
+- [TypeScript Training](#typescript-training)
+- [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [What is TypeScript?](#what-is-typescript)
+    - [Benefits of TypeScript:](#benefits-of-typescript)
+    - [Statically-Typed vs Dynamically-Typed](#statically-typed-vs-dynamically-typed)
+    - [TypeScript: JavaScript with Type Checking](#typescript-javascript-with-type-checking)
+  - [Setting up the Development Environment](#setting-up-the-development-environment)
+    - [Downloading Node.js and npm](#downloading-nodejs-and-npm)
+    - [Using Visual Studio Code](#using-visual-studio-code)
+    - [Configuring the TypeScript Compiler](#configuring-the-typescript-compiler)
+    - [Debugging TypeScript Applications](#debugging-typescript-applications)
+  - [Fundamentals](#fundamentals)
+    - [Built-in types](#built-in-types)
+    - [Advanced types](#advanced-types)
 ## Introduction
 
 ### What is TypeScript?
@@ -84,3 +100,163 @@ To enable source map generation for easier debugging, set "sourceMap": true in y
 }
 ```
 This will create source map files for emitted JavaScript files, aiding in debugging TypeScript applications.
+
+## Fundamentals
+
+here we're going to explore the fundamentals of typescript.
+
+### Built-in types
+ 
+ in **JS** :
+  - number
+  - string
+  - boolean
+  - null
+  - undefined
+  - object
+
+  in **TS** :
+  - any
+  - unknown
+  - never
+  - enum
+  - tuple
+
+**Number**
+  ```ts
+  let number: number = 123456789;
+  //we can separate its digits using an underscore
+  let sales: number = 123_456_789;
+  ```
+
+  and we have type of number
+
+  ```ts
+  let decimal: number = 6;
+  let hex: number = 0xf00d;
+  let binary: number = 0b1010;
+  let octal: number = 0o744;
+  console.log(decimal); // 6
+  console.log(hex); // 61453
+  console.log(binary); // 10
+  console.log(octal); // 484
+  ```
+
+  we can do this
+  ```ts
+  let number = 123456789;
+  ```
+  and its take that its type is number
+
+  but if we declare like this
+
+  ```ts
+  let level;
+  ```
+
+  here typescript assumes that this variable is of type any
+
+  so, lets talk about the any type
+
+**Any**
+
+  ```ts
+  let level;
+  ```
+
+  here ts assumes that level type is **any**
+  then we can do this:
+   ```ts
+  let level;
+  level = 1;
+  level = 'a';
+  ```
+  but this against the whole idea of using typescript because we use ts for type safety.
+  so as a best practice you should avoid using the any type as much as possible. 
+
+**Arrays**
+
+```ts
+let list: number[] = [1, 2, 3];
+console.log(list); // [ 1, 2, 3 ]
+
+let list2: Array<number> = [1, 2, 3];
+console.log(list2); // [ 1, 2, 3 ]
+```
+
+if you try to use this for example
+
+```ts
+list.forEach((item) => {item.toFixed});
+```
+
+then when you type item. you can see all the properties and methods of number objects, because our editor knows the type of item and it offers code completion.
+
+***this a very nice method***
+
+**tuple**
+
+```ts
+  let x: [string, number];
+  x = ['hello', 10];
+  console.log(x); // [ 'hello', 10 ]
+  //x = [10, 'hello']; // Error: Type 'number' is not assignable to type 'string'.
+```
+
+**enum**
+
+`enum` represent a list of related constants
+
+```ts
+  enum Color {Red, Green, Blue}
+  let c: Color = Color.Green;
+  console.log(c); // 1
+  console.log(Color[1]); // Green
+
+```
+
+**functions**
+
+```ts
+  function add(x: number, y: number): number {
+      return x + y;
+  }
+  console.log(add(10, 20)); // 30
+```
+
+there is an optional parameters that we can use:
+
+```ts
+  function buildName(firstName: string, lastName?: string): string {
+      if (lastName)
+          return firstName + " " + lastName;
+      else
+          return firstName;
+  }
+  console.log(buildName("Nada")); // Nada
+  console.log(buildName("Nada", "Jaradat")); // Nada Jaradat
+```
+
+**objects**
+
+```ts
+  let obj: { x: number, y: number } = { x: 10, y: 20 };
+  console.log(obj); // { x: 10, y: 20 }
+```
+
+and we can use optional:
+
+```ts
+  let optObj: { x: number, y?: number } = { x: 10 };
+```
+
+we can add `readonly` to the object variable.
+
+### Advanced types
+- type aliases
+- unions and intersections
+- type narrowing 
+- nullable types
+- the unknown type
+- the never type
+
