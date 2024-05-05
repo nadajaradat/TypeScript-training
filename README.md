@@ -1,5 +1,8 @@
 # TypeScript Training
 
+[Crash Course](https://www.youtube.com/watch?v=d56mG7DezGs)
+[Official Documentation](https://www.typescriptlang.org/docs/)
+
 # Table of Contents
 - [TypeScript Training](#typescript-training)
 - [Table of Contents](#table-of-contents)
